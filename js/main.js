@@ -266,6 +266,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 (function(){
   const N=34, pts=[]; for(let i=0;i<N;i++) pts.push(28+Math.random()*30);
   const line=document.getElementById('line'), area=document.getElementById('area'), eps=document.getElementById('evtNow');
+  if(!line || !area || !eps) return;
   function draw(){
     const W=300,H=76,stepX=W/(N-1);
     let d='';
@@ -511,7 +512,8 @@ document.querySelectorAll('input[name="prioritate"]').forEach(el=>el.addEventLis
 updateQuote();
 updateIntake();
 
-document.getElementById('cform').addEventListener('submit',e=>{
+const cformEl=document.getElementById('cform');
+if(cformEl) cformEl.addEventListener('submit',e=>{
   e.preventDefault();
   const f=new FormData(e.target);
   const lang=document.documentElement.lang;
