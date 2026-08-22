@@ -89,7 +89,7 @@ const I18N = {
   ro:{},
   en:{
     'nav.services':'Services','nav.packages':'Packages','nav.process':'Process','nav.who':'Who it\'s for',
-    'nav.faq':'FAQ','nav.cta':'Get an assessment','nav.contact':'Contact','nav.founder':'Founder',
+    'nav.faq':'FAQ','nav.cta':'Get an assessment','nav.contact':'Contact','nav.founder':'Founder','nav.team':'Team',
     'hero.pill':'Active 24/7 monitoring · SIEM · Endpoint',
     'hero.h1a':'Your always-on','hero.h1b':'security watchtower',
     'hero.lead':'We monitor your servers and workstations, centralise your logs, triage the alerts and tell you exactly what matters. Real protection for small and mid-sized companies — without enterprise cost or complexity.',
@@ -201,7 +201,21 @@ const I18N = {
     'ct.send':'Send message','ct.proof':'The message opens in your email client, already filled in.','ct.note':'No newsletters, and we don\'t sell anyone\'s data. Full stop.',
     'ct.asset':'Affected system','ct.severity':'Severity','ct.plan':'Estimated package','ct.estimate':'Estimate',
     'quote.eyebrow':'Estimator','quote.h3':'Configure a quick estimate','quote.lead':'It is not a final quote, but it shows which BearSec level fits your infrastructure.','quote.endpoints':'Workstations','quote.servers':'Servers','quote.reco':'Recommendation','quote.month':'/ month, indicative','quote.assets':'monitored assets','quote.sla':'critical target time','quote.setup':'typical start','quote.cta':'Send configuration','quote.audit':'Run mini audit',
-    'foot.tag':'Cybersecurity monitoring & alert response'
+    'foot.tag':'Cybersecurity monitoring & alert response',
+    'foot.back':'← Main site',
+
+    'team.eyebrow':'Team','team.h1':'The people behind BearSec',
+    'team.lead':'We\'re not a call center. We\'re two people with real experience in security and in running enterprise programs, who work directly with the first clients.',
+    'team.f.badge':'BearSec Founder',
+    'team.f.h2':'Constantin Ududec — Security Engineer & SOC Analyst',
+    'team.f.p1':'Since August 26, 2022 I\'ve worked daily at Expertware as a SOC analyst — monitoring alerts, triaging real incidents and tuning detections across SIEM, EDR and firewalls, on production infrastructure. BearSec is how I bring that same operational discipline to small and mid-sized companies that can\'t afford an in-house 24/7 SOC.',
+    'team.m.eyebrow':'Associate',
+    'team.m.h2':'Magda Ududec — IT Project Manager & Client Delivery',
+    'team.m.p1':'Since April 2022 I\'ve been leading complex enterprise programs at Emerson — cloud migrations (OCI & AWS, 500+ workloads), global acquisitions and divestitures, program governance and executive reporting for sponsors and directors. At BearSec I handle project coordination, client communication and service delivery — so every client always knows exactly where things stand.',
+    'team.m.s1':'years in enterprise programs','team.m.s2':'workloads migrated (OCI / AWS)','team.m.s3':'sites migrated globally',
+    'team.m.chip.pr':'PR & Client Communication',
+    'team.m.badge':'Part of the BearSec team',
+    'team.m.cta':'LinkedIn profile'
   }
 };
 
