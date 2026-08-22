@@ -12,6 +12,15 @@
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+<div id="introFx" aria-hidden="true">
+  <div class="intro-half l"></div>
+  <div class="intro-half r"></div>
+  <div class="intro-bear">
+    <div class="intro-bear-glow"></div>
+    <img src="img/bear-intro.png" alt="" />
+    <div class="impact-point"></div>
+  </div>
+</div>
 <div class="grid-bg"></div>
 
 <header id="hdr">
@@ -138,6 +147,7 @@
         <div class="hud-box r"><small data-i18n="bat.active">Active acum</small><b id="hudActive">0</b></div>
         <div class="hud-box a"><small data-i18n="bat.shield">Integritate scut</small><b id="hudShield">100%</b></div>
       </div>
+      <video class="battle-video" src="img/bear-battle.mp4" autoplay loop muted playsinline></video>
       <canvas id="battle"></canvas>
       <div class="battle-actions">
         <button class="btn btn-primary" id="waveBtn" data-i18n="bat.btn">Lansează un val de atac</button>
@@ -158,9 +168,6 @@
             <stop offset="0%" stop-color="rgba(232,163,61,.35)"/>
             <stop offset="100%" stop-color="rgba(232,163,61,0)"/>
           </radialGradient>
-          <clipPath id="headClip">
-            <path d="M250 128 L342 164 L374 250 L350 336 L250 394 L150 336 L126 250 L158 164 Z"/>
-          </clipPath>
         </defs>
 
         <!-- orbits -->
@@ -174,52 +181,6 @@
           <line x1="250" y1="250" x2="250" y2="22" stroke="rgba(232,163,61,.5)" stroke-width="1.2"/>
         </g>
 
-        <!-- ears -->
-        <path class="bear-line" d="M168 138 a40 40 0 1 1 34 44"/>
-        <path class="bear-line" d="M332 138 a40 40 0 1 0 -34 44"/>
-        <circle class="mesh" cx="168" cy="138" r="20"/>
-        <circle class="mesh" cx="332" cy="138" r="20"/>
-
-        <!-- head -->
-        <path class="bear-line" d="M250 128 L342 164 L374 250 L350 336 L250 394 L150 336 L126 250 L158 164 Z"/>
-
-        <!-- internal mesh -->
-        <g clip-path="url(#headClip)">
-          <g class="mesh">
-            <path d="M250 128 L250 394 M126 250 L374 250 M158 164 L350 336 M342 164 L150 336"/>
-            <path d="M250 128 L150 336 M250 128 L350 336 M126 250 L250 394 M374 250 L250 394"/>
-            <path d="M206 238 L294 238 M206 238 L250 306 M294 238 L250 306"/>
-          </g>
-          <line class="scanline" x1="120" y1="250" x2="380" y2="250"/>
-        </g>
-
-        <!-- snout -->
-        <path class="bear-line thin" d="M250 280 L294 300 L288 342 L250 360 L212 342 L206 300 Z"/>
-        <path class="bear-line thin" d="M250 300 L266 314 L250 330 L234 314 Z"/>
-        <path class="bear-line thin" d="M250 330 L250 344 M250 344 q-14 10 -22 -2 M250 344 q14 10 22 -2"/>
-
-        <!-- brows -->
-        <path class="bear-line thin" d="M186 216 L224 224 M314 216 L276 224"/>
-
-        <!-- eyes -->
-        <circle class="eye" cx="206" cy="240" r="9"/>
-        <circle class="eye" cx="294" cy="240" r="9"/>
-
-        <!-- nodes -->
-        <g>
-          <circle class="node" cx="250" cy="128" r="4" style="animation-delay:2.5s,3.0s"/>
-          <circle class="node" cx="342" cy="164" r="4" style="animation-delay:2.6s,3.2s"/>
-          <circle class="node" cx="374" cy="250" r="4" style="animation-delay:2.7s,3.4s"/>
-          <circle class="node" cx="350" cy="336" r="4" style="animation-delay:2.8s,3.6s"/>
-          <circle class="node" cx="250" cy="394" r="4" style="animation-delay:2.9s,3.8s"/>
-          <circle class="node" cx="150" cy="336" r="4" style="animation-delay:3.0s,4.0s"/>
-          <circle class="node" cx="126" cy="250" r="4" style="animation-delay:3.1s,4.2s"/>
-          <circle class="node" cx="158" cy="164" r="4" style="animation-delay:3.2s,4.4s"/>
-          <circle class="node" cx="168" cy="138" r="3.4" style="animation-delay:3.3s,4.6s"/>
-          <circle class="node" cx="332" cy="138" r="3.4" style="animation-delay:3.4s,4.8s"/>
-          <circle class="node" cx="250" cy="306" r="3.4" style="animation-delay:3.5s,5.0s"/>
-        </g>
-
         <!-- floating particles -->
         <g>
           <circle class="particle" cx="96" cy="400" r="2.2" style="animation-delay:0s"/>
@@ -230,6 +191,7 @@
           <circle class="particle" cx="360" cy="450" r="2" style="animation-delay:6.2s"/>
         </g>
       </svg>
+      <video class="guardian-video" src="img/bear-guardian.mp4" autoplay loop muted playsinline></video>
     </div>
     <div class="reveal">
       <div class="eyebrow" data-i18n="grd.eyebrow">Ursul</div>

@@ -1,3 +1,79 @@
+  /* ===== INTRO: URS DE FOC PRIN CORTINA ===== */
+  html.intro-lock{overflow:hidden}
+  #introFx{position:fixed;inset:0;z-index:99999;display:none}
+  #introFx.active{display:block}
+  .intro-half{
+    position:fixed;top:0;bottom:0;width:52%;
+    background:
+      radial-gradient(circle at 50% 45%,rgba(232,163,61,.09),transparent 62%),
+      linear-gradient(180deg,rgba(255,255,255,.02),transparent 40%),
+      #05070a;
+    transition:transform .68s cubic-bezier(.7,0,.18,1);
+  }
+  .intro-half.l{left:0;transform:translateX(0)}
+  .intro-half.r{right:0;transform:translateX(0)}
+  #introFx.out .intro-half.l{transform:translateX(-101%)}
+  #introFx.out .intro-half.r{transform:translateX(101%)}
+  .intro-bear{
+    position:fixed;left:50%;top:50%;width:min(62vw,460px);
+    opacity:0;transform:translate(-50%,-50%) scale(.55) rotate(-6deg);
+  }
+  .intro-bear img{display:block;width:100%;filter:drop-shadow(0 0 50px rgba(232,163,61,.55))}
+  .intro-bear-glow{
+    position:absolute;left:50%;top:50%;width:130%;aspect-ratio:1;z-index:-1;
+    transform:translate(-50%,-50%);border-radius:50%;filter:blur(30px);
+    background:radial-gradient(circle,rgba(245,182,84,.35),rgba(245,182,84,.06) 55%,transparent 72%);
+    animation:breathe 2.4s ease-in-out infinite;
+  }
+  .impact-point{position:absolute;left:78%;top:75%;width:1px;height:1px}
+
+  @keyframes bearLunge{
+    0%{opacity:0;transform:translate(-64%,-34%) scale(1.9) rotate(-12deg);filter:blur(6px)}
+    55%{opacity:1;transform:translate(-50%,-50%) scale(.92) rotate(2deg);filter:blur(0)}
+    72%{transform:translate(-50%,-50%) scale(1.07) rotate(-1deg)}
+    86%{transform:translate(-50%,-50%) scale(.98) rotate(0deg)}
+    100%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0deg)}
+  }
+  #introFx.in .intro-bear{animation:bearLunge .62s cubic-bezier(.22,.9,.25,1) forwards}
+  #introFx.out .intro-bear{
+    animation:none;opacity:0;
+    transform:translate(-50%,-50%) scale(1.4) rotate(8deg);
+    transition:transform .42s cubic-bezier(.4,0,.7,1),opacity .32s ease;
+  }
+
+  @keyframes introShake{
+    0%,100%{transform:translate(0,0)}
+    20%{transform:translate(-8px,5px)}
+    40%{transform:translate(7px,-6px)}
+    60%{transform:translate(-6px,3px)}
+    80%{transform:translate(4px,-2px)}
+  }
+  #introFx.impact{animation:introShake .32s ease}
+
+  .impact-flash{
+    position:fixed;inset:0;z-index:100000;pointer-events:none;
+    background:radial-gradient(circle at var(--ix,78%) var(--iy,75%),rgba(255,244,214,.95),rgba(245,182,84,.25) 35%,transparent 60%);
+    opacity:0;animation:flashPulse .5s ease forwards;
+  }
+  @keyframes flashPulse{0%{opacity:0}14%{opacity:1}100%{opacity:0}}
+  .impact-ring{
+    position:fixed;z-index:100000;width:16px;height:16px;border-radius:50%;pointer-events:none;
+    border:3px solid rgba(255,224,160,.95);box-shadow:0 0 26px rgba(245,182,84,.85);
+    transform:translate(-50%,-50%) scale(1);animation:ringOut .5s cubic-bezier(.2,.8,.3,1) forwards;
+  }
+  @keyframes ringOut{to{transform:translate(-50%,-50%) scale(10);opacity:0}}
+  .impact-shard{
+    position:fixed;z-index:100000;width:7px;height:7px;pointer-events:none;
+    background:linear-gradient(135deg,#ffcf85,#e8622f);
+    transform:translate(-50%,-50%) rotate(45deg);
+    animation:shardOut .55s ease-out forwards;
+  }
+  @keyframes shardOut{to{transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) rotate(45deg) scale(.2);opacity:0}}
+
+  @media(prefers-reduced-motion:reduce){
+    #introFx{display:none!important}
+  }
+
   :root{
     --bg:#070a0f;
     --bg-2:#0b0f16;
@@ -579,7 +655,15 @@
     mask-image:radial-gradient(circle at 50% 50%,#000 10%,transparent 78%);
     -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 10%,transparent 78%)
   }
-  #battle{display:block;width:100%;height:480px}
+  #battle{display:block;width:100%;height:480px;position:relative;z-index:1}
+  .battle-video{
+    position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+    width:min(52%,320px);aspect-ratio:1;object-fit:cover;border-radius:50%;
+    filter:drop-shadow(0 0 30px rgba(232,163,61,.35));
+    -webkit-mask-image:radial-gradient(circle,#000 62%,transparent 78%);
+    mask-image:radial-gradient(circle,#000 62%,transparent 78%);
+    z-index:0;pointer-events:none;
+  }
   .hud{
     position:absolute;top:16px;left:18px;right:18px;display:flex;justify-content:space-between;
     gap:14px;pointer-events:none;z-index:2;flex-wrap:wrap
@@ -607,6 +691,14 @@
   .guardian{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
   .bear-stage{position:relative;display:grid;place-items:center;min-height:460px}
   .bear-stage svg.bear{width:100%;max-width:460px;overflow:visible}
+  .guardian-video{
+    position:absolute;left:50%;top:57%;transform:translate(-50%,-50%);
+    width:min(82%,380px);aspect-ratio:1;object-fit:cover;object-position:50% 30%;border-radius:50%;
+    filter:drop-shadow(0 0 26px rgba(232,163,61,.4));
+    -webkit-mask-image:radial-gradient(circle,#000 70%,transparent 85%);
+    mask-image:radial-gradient(circle,#000 70%,transparent 85%);
+    pointer-events:none;
+  }
   .bear-glow{
     position:absolute;width:70%;aspect-ratio:1;border-radius:50%;
     background:radial-gradient(circle,rgba(232,163,61,.18),rgba(232,163,61,.04) 45%,transparent 70%);

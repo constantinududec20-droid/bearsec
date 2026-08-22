@@ -1,3 +1,90 @@
+/* ============ INTRO: URSUL SARE SI LOVESTE VIRUSUL ============ */
+(function(){
+  const fx = document.getElementById('introFx');
+  if(!fx) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let seen = false;
+  try{ seen = sessionStorage.getItem('bearsec-intro-seen') === '1'; }catch(e){}
+  if(seen) return;
+
+  document.documentElement.classList.add('intro-lock');
+  fx.classList.add('active');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>fx.classList.add('in')));
+
+  function spawnScratchAt(x, y, scale){
+    const scratch = document.createElement('div');
+    scratch.className = 'scratch';
+    scratch.style.left = x + 'px';
+    scratch.style.top = y + 'px';
+    scratch.style.transform = 'scale(' + scale + ') rotate(-8deg)';
+    scratch.style.zIndex = 100000;
+    scratch.innerHTML =
+      '<svg viewBox="0 0 150 150">'+
+      '<path d="M24 40 C54 26 92 34 122 60" style="stroke-width:2.6"/>'+
+      '<path d="M18 63 C50 49 92 57 128 84" style="stroke-width:3.8"/>'+
+      '<path d="M20 87 C52 74 92 82 126 106" style="stroke-width:3.2"/>'+
+      '<path d="M30 110 C58 100 92 106 118 124" style="stroke-width:2.2"/>'+
+      '</svg>';
+    document.body.appendChild(scratch);
+    setTimeout(()=>scratch.remove(), 820);
+  }
+
+  function spawnImpact(){
+    const pt = fx.querySelector('.impact-point');
+    if(!pt) return;
+    const r = pt.getBoundingClientRect();
+    const x = r.left, y = r.top;
+
+    fx.classList.add('impact');
+    setTimeout(()=>fx.classList.remove('impact'), 340);
+
+    const flash = document.createElement('div');
+    flash.className = 'impact-flash';
+    flash.style.setProperty('--ix', x + 'px');
+    flash.style.setProperty('--iy', y + 'px');
+    document.body.appendChild(flash);
+    setTimeout(()=>flash.remove(), 520);
+
+    const ring = document.createElement('div');
+    ring.className = 'impact-ring';
+    ring.style.left = x + 'px';
+    ring.style.top = y + 'px';
+    document.body.appendChild(ring);
+    setTimeout(()=>ring.remove(), 560);
+
+    for(let i=0;i<9;i++){
+      const a = (Math.PI*2/9)*i + Math.random()*0.4;
+      const dist = 40 + Math.random()*70;
+      const sh = document.createElement('div');
+      sh.className = 'impact-shard';
+      sh.style.left = x + 'px';
+      sh.style.top = y + 'px';
+      sh.style.setProperty('--tx', Math.cos(a)*dist + 'px');
+      sh.style.setProperty('--ty', Math.sin(a)*dist + 'px');
+      document.body.appendChild(sh);
+      setTimeout(()=>sh.remove(), 600);
+    }
+
+    spawnScratchAt(x, y, 1.7);
+  }
+
+  // ursul aterizeaza dupa lunge (~620ms), exact atunci lovim virusul
+  setTimeout(spawnImpact, 640);
+
+  // tinem scena putin dupa impact, apoi tragem cortina si iesim
+  setTimeout(()=>{
+    fx.classList.add('out');
+    spawnScratchAt(window.innerWidth/2, window.innerHeight/2, 2.2);
+
+    setTimeout(()=>{
+      fx.remove();
+      document.documentElement.classList.remove('intro-lock');
+    }, 700);
+  }, 2100);
+
+  try{ sessionStorage.setItem('bearsec-intro-seen', '1'); }catch(e){}
+})();
+
 const I18N = {
   ro:{},
   en:{
@@ -886,8 +973,6 @@ document.getElementById('cform').addEventListener('submit',e=>{
       ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.28); ctx.fill();
       ctx.globalAlpha=1;
     }
-
-    bear();
 
     hit=Math.max(0,hit-0.045);
     roar=Math.max(0,roar-0.03);
