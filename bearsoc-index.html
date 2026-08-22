@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BearSec — Monitorizare de securitate 24/7</title>
+<meta name="description" content="BearSec — monitorizare de securitate, SIEM, vizibilitate endpoint si raspuns la incidente pentru firme mici si medii. Fara costuri enterprise." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0f16'/><path d='M8 12a3 3 0 116 0M18 12a3 3 0 116 0M7 18c0-5 4-8 9-8s9 3 9 8-4 8-9 8-9-3-9-8z' fill='none' stroke='%23e8a33d' stroke-width='2'/></svg>" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="10" stroke="rgba(232,163,61,.35)"/>
+        <path d="M11 15.5a3.2 3.2 0 116.1-1.4M22.9 14.1a3.2 3.2 0 116.1 1.4" stroke="#e8a33d" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M9.5 22.5c0-5.6 4.7-9 10.5-9s10.5 3.4 10.5 9-4.7 9.5-10.5 9.5S9.5 28.1 9.5 22.5z" stroke="#e8a33d" stroke-width="1.9"/>
+        <circle cx="16" cy="21.5" r="1.5" fill="#e8a33d"/>
+        <circle cx="24" cy="21.5" r="1.5" fill="#e8a33d"/>
+        <path d="M20 25v2.5M17.5 27.5h5" stroke="#e8a33d" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <span>Bear<i>Sec</i></span>
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#servicii" data-i18n="nav.services">Servicii</a>
+      <a href="#pachete" data-i18n="nav.packages">Pachete</a>
+      <a href="#proces" data-i18n="nav.process">Proces</a>
+      <a href="#fondator" data-i18n="nav.founder">Fondator</a>
+      <a href="#pentru-cine" data-i18n="nav.who">Pentru cine</a>
+      <a href="#faq" data-i18n="nav.faq">Întrebări</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang">
+        <button data-lang="ro" class="on">RO</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#contact" class="btn btn-primary" data-i18n="nav.cta">Cere o evaluare</a>
+      <button class="burger" id="burger" aria-label="Meniu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill"><span class="dot"></span><span data-i18n="hero.pill">Monitorizare activă 24/7 · SIEM · Endpoint</span></div>
+      <h1><span data-i18n="hero.h1a">Turnul tău de veghe</span><br><em data-i18n="hero.h1b">pentru securitate cibernetică</em></h1>
+      <p class="lead" data-i18n="hero.lead">Monitorizăm serverele și stațiile tale, colectăm logurile, triem alertele și îți spunem exact ce contează. Protecție reală pentru firme mici și medii, fără complexitate și costuri de enterprise.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Cere o evaluare gratuită</a>
+        <a href="#servicii" class="btn btn-ghost" data-i18n="hero.cta2">Vezi ce monitorizăm</a>
+      </div>
+      <div class="hero-meta">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-3.4 9.2-8 10-4.6-.8-8-5-8-10V6l8-4z"/></svg><span data-i18n="hero.m1">Setup în 5 zile lucrătoare</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg><span data-i18n="hero.m2">Alerte critice în &lt; 30 min</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 19V5m0 14h16M8 15l3-4 3 3 5-7"/></svg><span data-i18n="hero.m3">Raport lunar concret</span></div>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-item"><b>Wazuh</b><span data-i18n="trust.t1">SIEM open-source, reguli și agenți endpoint</span></div>
+        <div class="trust-item"><b>EU-ready</b><span data-i18n="trust.t2">Date segmentate, NDA și proces GDPR</span></div>
+        <div class="trust-item"><b>Human triage</b><span data-i18n="trust.t3">Alertele critice sunt validate de om</span></div>
+      </div>
+    </div>
+
+    <div class="dash">
+      <div class="dash-top">
+        <span class="tl" style="background:#f2555a"></span>
+        <span class="tl" style="background:#e8a33d"></span>
+        <span class="tl" style="background:#3ddc97"></span>
+        <span class="dash-title">bearsec://console</span>
+        <span class="live"><span class="dot"></span>LIVE</span>
+      </div>
+      <div class="dash-body">
+        <div class="coverage">
+          <span>AD</span><span>Linux</span><span>Firewall</span><span>Cloud</span>
+        </div>
+        <div class="stats">
+          <div class="stat ok"><b data-count="148">0</b><small data-i18n="dash.assets">Assets</small></div>
+          <div class="stat warn"><b data-count="12">0</b><small data-i18n="dash.triage">În triaj</small></div>
+          <div class="stat crit"><b data-count="2">0</b><small data-i18n="dash.critical">Critice</small></div>
+        </div>
+        <div class="chart">
+          <div class="chart-h"><span data-i18n="dash.events">Evenimente / oră</span><span style="color:var(--cyan)" id="evtNow">— eps</span></div>
+          <svg viewBox="0 0 300 76" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(232,163,61,.42)"/>
+                <stop offset="100%" stop-color="rgba(232,163,61,0)"/>
+              </linearGradient>
+            </defs>
+            <path id="area" fill="url(#g1)" d=""/>
+            <path id="line" fill="none" stroke="#e8a33d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" d=""/>
+          </svg>
+        </div>
+        <div class="feed-h" data-i18n="dash.feed">Flux alerte</div>
+        <ul class="feed" id="feed"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:640px">
+      <div class="eyebrow" data-i18n="prob.eyebrow">Problema</div>
+      <h2 data-i18n="prob.h2">Majoritatea firmelor află prea târziu că au fost compromise</h2>
+      <p class="sec-lead" data-i18n="prob.lead">Antivirusul nu e monitorizare. Logurile pe care nu le citește nimeni nu sunt securitate. Un atac nu începe cu ransomware — începe cu un cont compromis, un login ciudat la 3 dimineața, un serviciu nou pornit pe un server.</p>
+    </div>
+    <div class="prob">
+      <div class="prob-card reveal"><div class="num" data-i18n="prob.n1">~200 zile</div><p data-i18n="prob.p1">Timpul mediu în care o breșă rămâne nedetectată într-o firmă fără monitorizare activă.</p></div>
+      <div class="prob-card reveal"><div class="num" data-i18n="prob.n2">1 din 3</div><p data-i18n="prob.p2">IMM-uri raportează cel puțin un incident de securitate pe an — majoritatea prin phishing sau credențiale furate.</p></div>
+      <div class="prob-card reveal"><div class="num" data-i18n="prob.n3">0</div><p data-i18n="prob.p3">Numărul de firme mici care își permit un SOC intern cu 3 ture. De asta existăm noi.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BATTLE -->
+<section id="actiune" style="padding-bottom:60px">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="max-width:660px">
+      <div class="eyebrow" data-i18n="bat.eyebrow">BearSec în acțiune</div>
+      <h2 data-i18n="bat.h2">Ursul nu doarme niciodată</h2>
+      <p class="sec-lead" data-i18n="bat.lead">Așa arată, simplificat, ce se întâmplă în fiecare zi în spatele monitorizării: amenințările vin, scutul le oprește, iar ce trece de scut e tăiat manual.</p>
+    </div>
+    <div class="battle-wrap reveal">
+      <div class="hud">
+        <div class="hud-box g"><small data-i18n="bat.blocked">Amenințări blocate</small><b id="hudBlocked">0</b></div>
+        <div class="hud-box r"><small data-i18n="bat.active">Active acum</small><b id="hudActive">0</b></div>
+        <div class="hud-box a"><small data-i18n="bat.shield">Integritate scut</small><b id="hudShield">100%</b></div>
+      </div>
+      <canvas id="battle"></canvas>
+      <div class="battle-actions">
+        <button class="btn btn-primary" id="waveBtn" data-i18n="bat.btn">Lansează un val de atac</button>
+      </div>
+      <div class="battle-hint" data-i18n="bat.hint">// click oriunde pentru a genera o amenințare</div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARDIAN / BEAR -->
+<section id="guardian" style="padding-top:40px">
+  <div class="wrap guardian">
+    <div class="bear-stage reveal">
+      <div class="bear-glow"></div>
+      <svg class="bear" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+        <defs>
+          <radialGradient id="sweepG" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(232,163,61,.35)"/>
+            <stop offset="100%" stop-color="rgba(232,163,61,0)"/>
+          </radialGradient>
+          <clipPath id="headClip">
+            <path d="M250 128 L342 164 L374 250 L350 336 L250 394 L150 336 L126 250 L158 164 Z"/>
+          </clipPath>
+        </defs>
+
+        <!-- orbits -->
+        <circle class="ring r1" cx="250" cy="250" r="228"/>
+        <circle class="ring r2" cx="250" cy="250" r="196"/>
+        <circle class="ring r3" cx="250" cy="250" r="243"/>
+
+        <!-- radar sweep -->
+        <g class="sweep">
+          <path d="M250 250 L250 22 A228 228 0 0 1 400 78 Z" fill="url(#sweepG)"/>
+          <line x1="250" y1="250" x2="250" y2="22" stroke="rgba(232,163,61,.5)" stroke-width="1.2"/>
+        </g>
+
+        <!-- ears -->
+        <path class="bear-line" d="M168 138 a40 40 0 1 1 34 44"/>
+        <path class="bear-line" d="M332 138 a40 40 0 1 0 -34 44"/>
+        <circle class="mesh" cx="168" cy="138" r="20"/>
+        <circle class="mesh" cx="332" cy="138" r="20"/>
+
+        <!-- head -->
+        <path class="bear-line" d="M250 128 L342 164 L374 250 L350 336 L250 394 L150 336 L126 250 L158 164 Z"/>
+
+        <!-- internal mesh -->
+        <g clip-path="url(#headClip)">
+          <g class="mesh">
+            <path d="M250 128 L250 394 M126 250 L374 250 M158 164 L350 336 M342 164 L150 336"/>
+            <path d="M250 128 L150 336 M250 128 L350 336 M126 250 L250 394 M374 250 L250 394"/>
+            <path d="M206 238 L294 238 M206 238 L250 306 M294 238 L250 306"/>
+          </g>
+          <line class="scanline" x1="120" y1="250" x2="380" y2="250"/>
+        </g>
+
+        <!-- snout -->
+        <path class="bear-line thin" d="M250 280 L294 300 L288 342 L250 360 L212 342 L206 300 Z"/>
+        <path class="bear-line thin" d="M250 300 L266 314 L250 330 L234 314 Z"/>
+        <path class="bear-line thin" d="M250 330 L250 344 M250 344 q-14 10 -22 -2 M250 344 q14 10 22 -2"/>
+
+        <!-- brows -->
+        <path class="bear-line thin" d="M186 216 L224 224 M314 216 L276 224"/>
+
+        <!-- eyes -->
+        <circle class="eye" cx="206" cy="240" r="9"/>
+        <circle class="eye" cx="294" cy="240" r="9"/>
+
+        <!-- nodes -->
+        <g>
+          <circle class="node" cx="250" cy="128" r="4" style="animation-delay:2.5s,3.0s"/>
+          <circle class="node" cx="342" cy="164" r="4" style="animation-delay:2.6s,3.2s"/>
+          <circle class="node" cx="374" cy="250" r="4" style="animation-delay:2.7s,3.4s"/>
+          <circle class="node" cx="350" cy="336" r="4" style="animation-delay:2.8s,3.6s"/>
+          <circle class="node" cx="250" cy="394" r="4" style="animation-delay:2.9s,3.8s"/>
+          <circle class="node" cx="150" cy="336" r="4" style="animation-delay:3.0s,4.0s"/>
+          <circle class="node" cx="126" cy="250" r="4" style="animation-delay:3.1s,4.2s"/>
+          <circle class="node" cx="158" cy="164" r="4" style="animation-delay:3.2s,4.4s"/>
+          <circle class="node" cx="168" cy="138" r="3.4" style="animation-delay:3.3s,4.6s"/>
+          <circle class="node" cx="332" cy="138" r="3.4" style="animation-delay:3.4s,4.8s"/>
+          <circle class="node" cx="250" cy="306" r="3.4" style="animation-delay:3.5s,5.0s"/>
+        </g>
+
+        <!-- floating particles -->
+        <g>
+          <circle class="particle" cx="96" cy="400" r="2.2" style="animation-delay:0s"/>
+          <circle class="particle" cx="404" cy="410" r="1.8" style="animation-delay:1.4s"/>
+          <circle class="particle" cx="60" cy="300" r="1.6" style="animation-delay:2.6s"/>
+          <circle class="particle" cx="440" cy="320" r="2.4" style="animation-delay:3.8s"/>
+          <circle class="particle" cx="140" cy="440" r="1.6" style="animation-delay:5.1s"/>
+          <circle class="particle" cx="360" cy="450" r="2" style="animation-delay:6.2s"/>
+        </g>
+      </svg>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="grd.eyebrow">Ursul</div>
+      <h2 data-i18n="grd.h2">Cineva se uită. Tot timpul.</h2>
+      <p class="sec-lead" data-i18n="grd.lead">Ursul nu e doar un logo. E ideea din spatele BearSec: ceva care stă calm, nu face gălăgie degeaba, dar vede tot ce mișcă în teritoriul lui — și reacționează exact când trebuie.</p>
+      <div class="tagline-mono" data-i18n="grd.mono">// always awake · always watching</div>
+      <div class="g-stats">
+        <div><b data-i18n="grd.b1">24/7</b><span data-i18n="grd.s1">Monitorizare continuă</span></div>
+        <div><b data-i18n="grd.b2">&lt; 30 min</b><span data-i18n="grd.s2">Reacție la alerte critice</span></div>
+        <div><b data-i18n="grd.b3">0</b><span data-i18n="grd.s3">Alerte pe care le ignorăm</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicii">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="max-width:680px">
+      <div class="eyebrow" data-i18n="svc.eyebrow">Servicii</div>
+      <h2 data-i18n="svc.h2">Ce facem, concret</h2>
+      <p class="sec-lead" data-i18n="svc.lead">Fără acronime aruncate în vânt. Uite exact ce primești.</p>
+    </div>
+    <div class="svc">
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H4z"/><path d="M9 20h6M12 16v4"/><path d="M7 11l2.5-3 2.5 3.5L14.5 8 17 12"/></svg></div>
+        <h3 data-i18n="svc.t1">SIEM & centralizare loguri</h3>
+        <p data-i18n="svc.d1">Wazuh + Elastic pentru colectarea și corelarea logurilor de pe servere, firewall, Active Directory și cloud. Totul într-un singur loc, cu retenție și căutare.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M8 10.5l2 2 4-4"/></svg></div>
+        <h3 data-i18n="svc.t2">Vizibilitate endpoint</h3>
+        <p data-i18n="svc.d2">Agenți pe stații și servere: procese, servicii noi, modificări de fișiere critice, USB-uri, software vulnerabil. Vezi ce se întâmplă, nu doar ce s-a blocat.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l9 16H3l9-16z"/><path d="M12 9v5M12 17h.01"/></svg></div>
+        <h3 data-i18n="svc.t3">Triaj de alerte</h3>
+        <p data-i18n="svc.d3">Aici e diferența reală. Un om se uită la alerte, elimină zgomotul și te sună doar când chiar e cazul. Fără 400 de emailuri pe care nu le citește nimeni.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.4 9.2-8 10-4.6-.8-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3 data-i18n="svc.t4">Detecție amenințări</h3>
+        <p data-i18n="svc.d4">Reguli pentru brute-force, escaladare de privilegii, persistență, comportament de ransomware, plus îmbogățire cu threat intelligence (VirusTotal, AbuseIPDB, MISP).</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 14h6M9 17h4"/></svg></div>
+        <h3 data-i18n="svc.t5">Raport lunar</h3>
+        <p data-i18n="svc.d5">Un document scurt și util: ce s-a întâmplat, ce am blocat, ce riscuri rămân și ce ar trebui rezolvat luna asta. Bun și pentru audit sau asigurare cyber.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div>
+        <h3 data-i18n="svc.t6">Răspuns la incidente</h3>
+        <p data-i18n="svc.d6">Când ceva chiar se întâmplă: izolăm stația, oprim contul, strângem dovezile și te ghidăm pas cu pas până la revenirea în normal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="risk-score">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="max-width:680px">
+      <div class="eyebrow" data-i18n="risk.eyebrow">Mini audit</div>
+      <h2 data-i18n="risk.h2">Cat de vizibila este infrastructura ta?</h2>
+      <p class="sec-lead" data-i18n="risk.lead">Bifeaza ce ai deja. Scorul nu este un audit formal, dar iti arata rapid unde lipseste monitorizarea.</p>
+    </div>
+    <div class="risk-lab reveal">
+      <div class="score-panel">
+        <div class="score-ring low" id="scoreRing" style="--score-pct:0%">
+          <div class="score-core"><div><b id="riskScore">0</b><span data-i18n="risk.score">Security score</span></div></div>
+        </div>
+        <div class="score-status">
+          <b id="riskTitle" data-i18n="risk.title.mid">Vizibilitate partiala</b>
+          <span class="score-badge" id="riskBadge">Core SOC</span>
+        </div>
+        <p id="riskText" data-i18n="risk.text.mid">Ai cateva controale bune, dar atacurile mai discrete pot ramane in loguri fara sa fie vazute la timp.</p>
+        <div class="score-bars">
+          <div class="score-bar"><span>Identity</span><i><span id="barId" style="--w:0%"></span></i><em id="barIdTxt">0</em></div>
+          <div class="score-bar"><span>Endpoint</span><i><span id="barEp" style="--w:0%"></span></i><em id="barEpTxt">0</em></div>
+          <div class="score-bar"><span>Response</span><i><span id="barRs" style="--w:0%"></span></i><em id="barRsTxt">0</em></div>
+        </div>
+      </div>
+      <div class="check-panel">
+        <div class="check-grid" id="riskChecks">
+          <label class="risk-check"><input type="checkbox" data-score="12" data-area="id"><span data-i18n="risk.c1">MFA pe conturile importante<small>mail, VPN, admin, cloud</small></span></label>
+          <label class="risk-check"><input type="checkbox" data-score="10" data-area="ep"><span data-i18n="risk.c2">Endpoint protection pe statii<small>antivirus/EDR activ si actualizat</small></span></label>
+          <label class="risk-check"><input type="checkbox" data-score="14" data-area="rs"><span data-i18n="risk.c3">Loguri centralizate<small>servere, firewall, AD, cloud</small></span></label>
+          <label class="risk-check"><input type="checkbox" data-score="12" data-area="rs"><span data-i18n="risk.c4">Cineva verifica alertele<small>nu doar emailuri automate</small></span></label>
+          <label class="risk-check"><input type="checkbox" data-score="10" data-area="ep"><span data-i18n="risk.c5">Patching recurent<small>lunar sau mai des pentru critic</small></span></label>
+          <label class="risk-check"><input type="checkbox" data-score="10" data-area="rs"><span data-i18n="risk.c6">Backup testat<small>restore verificat, nu doar copii</small></span></label>
+          <label class="risk-check"><input type="checkbox" data-score="8" data-area="id"><span data-i18n="risk.c7">Acces admin separat<small>conturi privilegiate controlate</small></span></label>
+          <label class="risk-check"><input type="checkbox" data-score="8" data-area="ep"><span data-i18n="risk.c8">Inventar de asseturi<small>stii ce trebuie monitorizat</small></span></label>
+        </div>
+        <div class="risk-result" id="riskResult" data-i18n="risk.result.mid"><b>Recomandare:</b> BearSec Business, cu triaj uman si reguli ajustate pe mediul tau.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pachete">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="max-width:640px">
+      <div class="eyebrow" data-i18n="pkg.eyebrow">Pachete</div>
+      <h2 data-i18n="pkg.h2">Alege nivelul de acoperire</h2>
+      <p class="sec-lead" data-i18n="pkg.lead">Preț fix lunar, stabilit după numărul de endpointuri și servere. Fără surprize în factură.</p>
+    </div>
+    <div class="pkgs">
+      <div class="pkg reveal">
+        <h3>BearSec Start</h3>
+        <div class="pkg-price"><b>Starter</b><span data-i18n="pkg.price1">ofertă pe infrastructură</span></div>
+        <p class="for" data-i18n="pkg.for1">Pentru firme care vor să vadă, în sfârșit, ce se întâmplă în infrastructură.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s1a">Monitorizare servere & infrastructură critică</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s1b">Colectare și retenție loguri</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s1c">Alerte critice pe email / Slack / Teams</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s1d">Raport lunar de securitate</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s1e">Suport pe email, în timpul programului</span></li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" data-i18n="pkg.cta">Cere ofertă</a>
+      </div>
+      <div class="pkg featured reveal">
+        <span class="pkg-tag" data-i18n="pkg.popular">Cel mai ales</span>
+        <h3>BearSec Business</h3>
+        <div class="pkg-price"><b>Core SOC</b><span data-i18n="pkg.price2">monitorizare + triaj</span></div>
+        <p class="for" data-i18n="pkg.for2">Acoperire completă pe stații și servere, cu alerte triate de un om.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s2a">Tot ce include Start</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s2b">Monitorizare endpointuri (stații de lucru)</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s2c">Triaj de alerte făcut de analist</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s2d">Monitorizare integritate fișiere & vulnerabilități</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s2e">Recomandări de remediere prioritizate</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s2f">Ședință lunară de review, 60 min</span></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" data-i18n="pkg.cta">Cere ofertă</a>
+      </div>
+      <div class="pkg reveal">
+        <h3>BearSec Response</h3>
+        <div class="pkg-price"><b>Response</b><span data-i18n="pkg.price3">prioritate incident</span></div>
+        <p class="for" data-i18n="pkg.for3">Pentru firme unde un incident nerezolvat rapid înseamnă bani pierduți.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s3a">Tot ce include Business</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s3b">Linie prioritară de incident, 24/7</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s3c">Investigație inițială & containment</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s3d">Colectare dovezi și raport post-incident</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s3e">Plan de răspuns și exercițiu anual</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="pkg.s3f">Analist dedicat contului tău</span></li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" data-i18n="pkg.cta">Cere ofertă</a>
+      </div>
+    </div>
+    <p class="note reveal" style="text-align:center;margin-top:26px" data-i18n="pkg.note">Nu promitem că nu vei fi atacat niciodată — nimeni serios nu promite asta. Promitem că vei ști la timp și vei ști ce ai de făcut.</p>
+  </div>
+</section>
+
+<section id="quote-estimator">
+  <div class="wrap">
+    <div class="quote-lab reveal" id="quote-lab">
+      <div class="quote-controls">
+        <div>
+          <div class="eyebrow" data-i18n="quote.eyebrow">Estimator</div>
+          <h3 data-i18n="quote.h3">Configureaza o estimare rapida</h3>
+          <p class="sec-lead" style="font-size:14px;margin-top:8px" data-i18n="quote.lead">Nu este oferta finala, dar iti arata ce nivel BearSec se potriveste infrastructurii tale.</p>
+        </div>
+        <div class="range-field">
+          <div class="range-top"><label for="quoteEndpoints" data-i18n="quote.endpoints">Statii</label><b id="quoteEndpointsVal">45</b></div>
+          <input id="quoteEndpoints" type="range" min="5" max="250" value="45" step="5">
+        </div>
+        <div class="range-field">
+          <div class="range-top"><label for="quoteServers" data-i18n="quote.servers">Servere</label><b id="quoteServersVal">6</b></div>
+          <input id="quoteServers" type="range" min="0" max="40" value="6" step="1">
+        </div>
+        <div class="quote-modes" id="quoteModes">
+          <label><input type="radio" name="quoteMode" value="start"><span>Start</span></label>
+          <label><input type="radio" name="quoteMode" value="business" checked><span>Business</span></label>
+          <label><input type="radio" name="quoteMode" value="response"><span>Response</span></label>
+        </div>
+      </div>
+      <div class="quote-output">
+        <div class="quote-output-top">
+          <div><small data-i18n="quote.reco">Recomandare</small><h3 id="quotePlan">BearSec Business</h3></div>
+          <span class="quote-pill" id="quoteCoverage">Core SOC</span>
+        </div>
+        <div class="quote-price"><b id="quotePrice">EUR 1.650 - 2.200</b><span data-i18n="quote.month">/ luna, orientativ</span></div>
+        <div class="quote-meter" style="--quote-w:48%"><span id="quoteMeter"></span></div>
+        <div class="quote-next">
+          <div><b id="quoteAssets">51</b><span data-i18n="quote.assets">asseturi monitorizate</span></div>
+          <div><b id="quoteSla">&lt; 30 min</b><span data-i18n="quote.sla">timp tinta critic</span></div>
+          <div><b id="quoteSetup">3-5 zile</b><span data-i18n="quote.setup">pornire tipica</span></div>
+        </div>
+        <div class="risk-result" id="quoteAdvice"><b>Include:</b> loguri, endpoint visibility, triaj uman si raport lunar.</div>
+        <div class="quote-actions">
+          <a href="#contact" class="btn btn-primary" id="quoteToForm" data-i18n="quote.cta">Trimite configuratia</a>
+          <a href="#risk-score" class="btn btn-ghost" data-i18n="quote.audit">Fa mini auditul</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proces">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="max-width:640px">
+      <div class="eyebrow" data-i18n="proc.eyebrow">Proces</div>
+      <h2 data-i18n="proc.h2">De la primul apel la monitorizare activă</h2>
+      <p class="sec-lead" data-i18n="proc.lead">Fără proiecte de șase luni. În mai puțin de o săptămână ești pe radar.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h4 data-i18n="proc.t1">Evaluare</h4><p data-i18n="proc.d1">Discutăm 45 de minute despre infrastructură, riscuri și ce te doare acum.</p></div>
+      <div class="step reveal"><div class="n">02</div><h4 data-i18n="proc.t2">Instalare agenți</h4><p data-i18n="proc.d2">Punem agenții pe servere și stații. Fără downtime, fără dramă.</p></div>
+      <div class="step reveal"><div class="n">03</div><h4 data-i18n="proc.t3">Configurare alerte</h4><p data-i18n="proc.d3">Reglăm regulile pe mediul tău, ca să vezi semnal, nu zgomot.</p></div>
+      <div class="step reveal"><div class="n">04</div><h4 data-i18n="proc.t4">Monitorizare</h4><p data-i18n="proc.d4">Urmărim, triem, escaladăm. Tu îți vezi de treabă.</p></div>
+      <div class="step reveal"><div class="n">05</div><h4 data-i18n="proc.t5">Raportare</h4><p data-i18n="proc.d5">Lunar: ce s-a întâmplat, ce am rezolvat, ce urmează.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="fondator" class="founder">
+  <div class="wrap founder-grid">
+    <div class="founder-photo-wrap reveal">
+      <div class="founder-glow"></div>
+      <div class="founder-photo">
+        <img src="profile.jpg" alt="Constantin Ududec — Security Engineer, fondator BearSec" />
+        <div class="founder-frame"></div>
+        <div class="founder-badge"><span class="dot"></span><span data-i18n="fdr.badge">Disponibil pentru primii clienți</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="fdr.eyebrow">Fondator</div>
+      <h2 data-i18n="fdr.h2">Cine stă în spatele BearSec</h2>
+      <p class="sec-lead" style="margin-bottom:24px;max-width:640px" data-i18n="fdr.p1">Sunt <strong>Constantin Ududec</strong>, Security Engineer &amp; SOC Analyst. Din 26 august 2022 lucrez zilnic la Expertware ca analist SOC — monitorizez alerte, triez incidente reale și reglez detecțiile pe SIEM, EDR și firewall, pe infrastructuri de producție. BearSec e felul în care aduc aceeași disciplină operațională la firme mici și mijlocii care nu-și permit un SOC intern cu ture 24/7.</p>
+      <div class="g-stats" style="margin:0 0 8px">
+        <div><b>4</b><span data-i18n="fdr.s1">ani în operațiuni de securitate</span></div>
+        <div><b>10+</b><span data-i18n="fdr.s2">platforme SIEM / EDR / SOAR</span></div>
+        <div><b>14+</b><span data-i18n="fdr.s3">certificări în cybersecurity</span></div>
+      </div>
+      <div class="founder-chips">
+        <span class="chip">Wazuh</span><span class="chip">Microsoft Defender</span><span class="chip">CrowdStrike Falcon</span>
+        <span class="chip">SentinelOne</span><span class="chip">Cortex XSOAR</span><span class="chip">TheHive</span>
+        <span class="chip">Exabeam</span><span class="chip">Security Onion</span>
+      </div>
+      <div class="founder-certs">
+        <div class="founder-cert"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="fdr.c1">Fortinet Certified Cybersecurity Associate &amp; FortiGate 7.6 Operator</span></div>
+        <div class="founder-cert"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="fdr.c2">Cisco Certified CyberOps Associate</span></div>
+        <div class="founder-cert"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="fdr.c3">Microsoft Security, Compliance &amp; Identity Fundamentals</span></div>
+        <div class="founder-cert"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="fdr.c4">Exabeam Advanced Analytics &amp; Rule Tuning (4 certificări)</span></div>
+      </div>
+      <div class="cta-row" style="margin-top:28px">
+        <a href="https://constantinududec20-droid.github.io/portofolio/" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="fdr.cta">Vezi CV-ul complet</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="nav.cta">Cere o evaluare</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pentru-cine">
+  <div class="wrap aud">
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="aud.eyebrow">Pentru cine</div>
+      <h2 style="margin-bottom:26px" data-i18n="aud.h2">BearSec e pentru tine dacă…</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="aud.l1">Ai între 10 și 250 de calculatoare și niciun om dedicat pe securitate.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="aud.l2">Ai un IT intern sau un furnizor, dar nimeni nu se uită la loguri.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="aud.l3">Un client, un auditor sau asiguratorul îți cere dovezi de monitorizare.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="aud.l4">Ai date sensibile: financiar, medical, juridic, producție, e-commerce.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span data-i18n="aud.l5">Ai avut deja un incident și nu vrei să se repete.</span></li>
+      </ul>
+    </div>
+    <div class="quote reveal">
+      <p data-i18n="aud.q">„Nu vindem frică și nu vindem acronime. Vindem faptul că, atunci când ceva merge prost la 2 noaptea, cineva se uită — și știe exact ce are de făcut.”</p>
+      <small data-i18n="aud.qa">— BearSec</small>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="max-width:600px">
+      <div class="eyebrow" data-i18n="faq.eyebrow">Întrebări</div>
+      <h2 data-i18n="faq.h2">Ce ne întreabă toți</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="q"><button data-i18n="faq.q1">Trebuie să înlocuim antivirusul actual?</button><div class="a"><p data-i18n="faq.a1">Nu. Lucrăm peste ce ai deja — Microsoft Defender, orice EDR sau antivirus existent. Noi adăugăm stratul de vizibilitate, corelare și triaj care lipsește. Dacă ce ai e slab, îți spunem direct și îți recomandăm alternative.</p></div></div>
+      <div class="q"><button data-i18n="faq.q2">Cât durează implementarea?</button><div class="a"><p data-i18n="faq.a2">Tipic 3–5 zile lucrătoare pentru o firmă mică. Prima zi: colectare informații. Zilele 2–3: instalare agenți. Zilele 4–5: reglaj alerte și validare. Din ziua 6 ești monitorizat.</p></div></div>
+      <div class="q"><button data-i18n="faq.q3">Unde stau datele noastre?</button><div class="a"><p data-i18n="faq.a3">Logurile pot rămâne în infrastructura ta, sau într-o instanță dedicată ție, găzduită în UE. Nu amestecăm datele clienților și nu le folosim în alte scopuri. Semnăm NDA și acord de prelucrare conform GDPR.</p></div></div>
+      <div class="q"><button data-i18n="faq.q4">Ce se întâmplă exact când apare o alertă critică?</button><div class="a"><p data-i18n="faq.a4">Alerta e validată de un analist, nu trimisă automat. Dacă e reală, primești notificare pe canalul agreat cu ce s-a întâmplat, ce sisteme sunt afectate și ce trebuie făcut imediat. Pe pachetul Response, intervenim direct în containment.</p></div></div>
+      <div class="q"><button data-i18n="faq.q5">Suntem prea mici pentru așa ceva?</button><div class="a"><p data-i18n="faq.a5">Exact invers — firmele mici sunt ținte tocmai pentru că se presupune că nimeni nu se uită. Pachetul Start e construit special pentru echipe sub 25 de oameni.</p></div></div>
+      <div class="q"><button data-i18n="faq.q6">Ce tehnologii folosiți?</button><div class="a"><p data-i18n="faq.a6">Preponderent open-source de calitate industrială: Wazuh, Elastic, Suricata, Grafana, plus surse de threat intelligence. Fără licențe scumpe pasate ție în factură, și fără vendor lock-in.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="band reveal">
+      <h2 data-i18n="band.h2">Hai să vedem ce se întâmplă în rețeaua ta</h2>
+      <p data-i18n="band.p">Evaluare gratuită, 45 de minute. Îți spunem ce vedem, ce riscuri sunt reale și dacă are sens să lucrăm împreună. Fără presiune de vânzare.</p>
+      <a href="#contact" class="btn btn-primary" data-i18n="band.cta">Programează evaluarea</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div class="reveal">
+      <div class="eyebrow" data-i18n="ct.eyebrow">Contact</div>
+      <h2 data-i18n="ct.h2">Scrie-ne</h2>
+      <p class="sec-lead" style="margin-bottom:30px" data-i18n="ct.lead">Răspundem în maximum o zi lucrătoare. Dacă ai un incident în desfășurare, sună direct.</p>
+      <div class="cinfo">
+        <div class="cbox"><h4 data-i18n="ct.email">Email</h4><a href="mailto:contact@bearsec.ro">contact@bearsec.ro</a></div>
+        <div class="cbox"><h4 data-i18n="ct.phone">Telefon</h4><a href="tel:+40700000000">+40 700 000 000</a></div>
+        <div class="cbox"><h4 data-i18n="ct.hours">Program</h4><p data-i18n="ct.hoursv">Luni–Vineri, 09:00–18:00<br>Linie de incident 24/7 pentru clienții Response</p></div>
+      </div>
+    </div>
+    <div class="reveal contact-panel">
+      <div class="form-top">
+        <div>
+          <div class="form-kicker" data-i18n="ct.formk">Secure intake</div>
+          <h3 data-i18n="ct.formh">Spune-ne ce vrei sa protejam</h3>
+        </div>
+        <div class="form-status" data-i18n="ct.status">Raspuns rapid</div>
+      </div>
+      <form id="cform">
+        <div class="row2">
+          <div class="field"><label data-i18n="ct.f1">Nume</label><input name="nume" placeholder="Alex Ionescu" required /></div>
+          <div class="field"><label data-i18n="ct.f2">Companie</label><input name="companie" placeholder="Compania ta" /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label data-i18n="ct.f3">Email</label><input type="email" name="email" placeholder="alex@companie.ro" required /></div>
+          <div class="field"><label data-i18n="ct.f4">Telefon</label><input name="telefon" placeholder="+40 700 000 000" /></div>
+        </div>
+        <div class="field"><label data-i18n="ct.f7">Prioritate</label>
+          <div class="quick-row">
+            <label><input type="radio" name="prioritate" value="Evaluare gratuita" checked><span data-i18n="ct.q1">Evaluare</span></label>
+            <label><input type="radio" name="prioritate" value="Oferta monitorizare"><span data-i18n="ct.q2">Oferta</span></label>
+            <label><input type="radio" name="prioritate" value="Incident activ"><span data-i18n="ct.q3">Incident</span></label>
+          </div>
+        </div>
+        <div class="intake-context" id="intakeContext">
+          <div class="intake-copy"><span class="intake-dot"></span><span><b id="intakeTitle">Evaluare initiala</b><span id="intakeText">Spune-ne ce ai acum si iti raspundem cu urmatorii pasi pentru vizibilitate.</span></span></div>
+          <div class="conditional-fields" id="incidentFields" hidden>
+            <div class="field"><label data-i18n="ct.asset">Sistem afectat</label><input name="sistem_afectat" placeholder="Ex: srv-file-01, email, VPN" /></div>
+            <div class="field"><label data-i18n="ct.severity">Severitate</label><select name="severitate"><option>Nu stim inca</option><option>Impact mare</option><option>Impact limitat</option></select></div>
+          </div>
+          <div class="conditional-fields" id="quoteFields" hidden>
+            <div class="field"><label data-i18n="ct.plan">Pachet estimat</label><input name="pachet_estimat" id="formPlan" placeholder="BearSec Business" /></div>
+            <div class="field"><label data-i18n="ct.estimate">Estimare</label><input name="estimare" id="formEstimate" placeholder="EUR 1.650 - 2.200 / luna" /></div>
+          </div>
+        </div>
+        <div class="field"><label data-i18n="ct.f5">Numar aproximativ de calculatoare</label>
+          <select name="marime">
+            <option data-i18n="ct.o1">Sub 25</option>
+            <option data-i18n="ct.o2">25 – 75</option>
+            <option data-i18n="ct.o3">75 – 250</option>
+            <option data-i18n="ct.o4">Peste 250</option>
+          </select>
+        </div>
+        <div class="field"><label data-i18n="ct.f6">De ce ne scrii?</label><textarea name="mesaj" placeholder="Ex: vrem monitorizare pentru servere, laptopuri si firewall; avem deja Microsoft Defender..." required></textarea></div>
+        <div class="submit-row">
+          <div class="micro-proof">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span data-i18n="ct.proof">Mesajul se deschide in clientul tau de email, gata completat.</span>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="ct.send">Trimite mesajul</button>
+        </div>
+        <p class="note" data-i18n="ct.note">Nu trimitem newslettere și nu vindem datele nimănui. Punct.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="soc-modal" id="socModal" aria-hidden="true">
+  <div class="soc-backdrop" data-close-soc></div>
+  <div class="soc-dialog" role="dialog" aria-modal="true" aria-labelledby="socTitle">
+    <div class="soc-head">
+      <div>
+        <div class="soc-kicker" data-i18n="soc.kicker">SOC alert detail</div>
+        <h3 id="socTitle">Suspicious activity</h3>
+      </div>
+      <button class="soc-close" type="button" data-close-soc aria-label="Close">x</button>
+    </div>
+      <div class="soc-body">
+      <div class="soc-map" aria-hidden="true">
+        <span class="soc-node bad">SOURCE</span>
+        <span class="soc-node mid">TRIAGE</span>
+        <span class="soc-node good">CONTAIN</span>
+      </div>
+      <div class="soc-meta">
+        <div><small data-i18n="soc.sev">Severity</small><b id="socSev">HIGH</b></div>
+        <div><small data-i18n="soc.asset">Asset</small><b id="socAsset">srv-app-01</b></div>
+        <div><small data-i18n="soc.time">Detected</small><b id="socTime">--:--:--</b></div>
+        <div><small data-i18n="soc.sla">SLA</small><b id="socSla">&lt; 30 min</b></div>
+      </div>
+      <div class="soc-steps">
+        <div class="soc-step"><b>01</b><span data-i18n="soc.step1">Corelam evenimentul cu loguri din endpoint, firewall si identitate.</span></div>
+        <div class="soc-step"><b>02</b><span data-i18n="soc.step2">Eliminam zgomotul si verificam daca exista indicatori reali de compromitere.</span></div>
+        <div class="soc-step"><b>03</b><span data-i18n="soc.step3">Daca alerta este reala, izolam sau limitam impactul impreuna cu echipa IT.</span></div>
+        <div class="soc-step"><b>04</b><span data-i18n="soc.step4">Trimitem recomandarea concreta si o includem in raportul lunar.</span></div>
+      </div>
+      <div class="soc-reco" id="socReco">Recommendation loaded by analyst.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <div>© <span id="yr"></span> BearSec · <span data-i18n="foot.tag">Cybersecurity monitoring & alert response</span></div>
+    <div class="foot-links">
+      <a href="#servicii" data-i18n="nav.services">Servicii</a>
+      <a href="#pachete" data-i18n="nav.packages">Pachete</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
