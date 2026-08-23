@@ -390,7 +390,7 @@
           <div><small data-i18n="quote.reco">Recomandare</small><h3 id="quotePlan">BearSec Business</h3></div>
           <span class="quote-pill" id="quoteCoverage">Core SOC</span>
         </div>
-        <div class="quote-price"><b id="quotePrice">EUR 1.650 - 2.200</b><span data-i18n="quote.month">/ luna, orientativ</span></div>
+        <div class="quote-price"><b id="quotePrice">EUR 1.150 - 1.500</b><span data-i18n="quote.month">/ luna, orientativ</span></div>
         <div class="quote-meter" style="--quote-w:48%"><span id="quoteMeter"></span></div>
         <div class="quote-next">
           <div><b id="quoteAssets">51</b><span data-i18n="quote.assets">asseturi monitorizate</span></div>
@@ -514,8 +514,14 @@
             <div class="field"><label data-i18n="ct.severity">Severitate</label><select name="severitate"><option>Nu stim inca</option><option>Impact mare</option><option>Impact limitat</option></select></div>
           </div>
           <div class="conditional-fields" id="quoteFields" hidden>
-            <div class="field"><label data-i18n="ct.plan">Pachet estimat</label><input name="pachet_estimat" id="formPlan" placeholder="BearSec Business" /></div>
-            <div class="field"><label data-i18n="ct.estimate">Estimare</label><input name="estimare" id="formEstimate" placeholder="EUR 1.650 - 2.200 / luna" /></div>
+            <div class="field"><label data-i18n="ct.plan">Pachet estimat</label>
+              <select name="pachet_estimat" id="formPlan">
+                <option value="BearSec Start">BearSec Start</option>
+                <option value="BearSec Business" selected>BearSec Business</option>
+                <option value="BearSec Response">BearSec Response</option>
+              </select>
+            </div>
+            <div class="field"><label data-i18n="ct.estimate">Estimare</label><input name="estimare" id="formEstimate" placeholder="EUR 1.150 - 1.500 / luna" /></div>
           </div>
         </div>
         <div class="field"><label data-i18n="ct.f5">Numar aproximativ de calculatoare</label>

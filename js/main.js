@@ -435,15 +435,15 @@ document.querySelectorAll('.q').forEach(q=>{
   };
 });
 
-const quoteState={plan:'BearSec Business', price:'EUR 1.650 - 2.200'};
+const quoteState={plan:'BearSec Business', price:'EUR 1.150 - 1.500'};
 function updateQuote(){
   const ep=document.getElementById('quoteEndpoints'), sv=document.getElementById('quoteServers');
   if(!ep || !sv) return;
   const endpoints=+ep.value, servers=+sv.value, mode=document.querySelector('input[name="quoteMode"]:checked').value;
   const assets=endpoints+servers;
-  const base={start:280,business:520,response:900}[mode];
-  const perEndpoint={start:9,business:18,response:25}[mode];
-  const perServer={start:34,business:64,response:90}[mode];
+  const base={start:180,business:340,response:600}[mode];
+  const perEndpoint={start:6,business:12,response:18}[mode];
+  const perServer={start:22,business:42,response:65}[mode];
   const low=Math.round((base+endpoints*perEndpoint+servers*perServer)/50)*50;
   const high=Math.round(low*1.32/50)*50;
   const plan={start:'BearSec Start',business:'BearSec Business',response:'BearSec Response'}[mode];
@@ -478,6 +478,13 @@ const quoteToForm=document.getElementById('quoteToForm');
 if(quoteToForm) quoteToForm.addEventListener('click',()=>{
   const radio=[...document.querySelectorAll('input[name="prioritate"]')].find(r=>r.value==='Oferta monitorizare');
   if(radio){ radio.checked=true; updateIntake(); }
+});
+const formPlanSelect=document.getElementById('formPlan');
+if(formPlanSelect) formPlanSelect.addEventListener('change',()=>{
+  const modeByPlan={'BearSec Start':'start','BearSec Business':'business','BearSec Response':'response'};
+  const mode=modeByPlan[formPlanSelect.value];
+  const radio=document.querySelector('input[name="quoteMode"][value="'+mode+'"]');
+  if(radio){ radio.checked=true; updateQuote(); }
 });
 
 function updateIntake(){
