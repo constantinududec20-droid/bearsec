@@ -215,7 +215,26 @@ const I18N = {
     'team.m.s1':'years in enterprise programs','team.m.s2':'workloads migrated (OCI / AWS)','team.m.s3':'sites migrated globally',
     'team.m.chip.pr':'PR & Client Communication',
     'team.m.badge':'Part of the BearSec team',
-    'team.m.cta':'LinkedIn profile'
+    'team.m.cta':'LinkedIn profile',
+
+    'nav.privacy':'Privacy',
+    'priv.eyebrow':'Privacy','priv.h1':'Privacy Policy','priv.updated':'Last updated: August 23, 2026',
+    'priv.s1.h':'1. Who we are',
+    'priv.s1.p':'BearSec is a security monitoring service operated by Constantin Ududec, Suceava, Romania. For any question about your data, write to us at <a href="mailto:contact@bearsec.ro" style="color:var(--accent)">contact@bearsec.ro</a>.',
+    'priv.s2.h':'2. What data we collect',
+    'priv.s2.p':'When you fill in the contact form, the data (name, company, email, phone, message) is sent through a form processing service (Formspree Inc.) and reaches us directly, so we can reply to you. We do not use this data for any other purpose and do not sell or share it with third parties for marketing.',
+    'priv.s3.h':'3. Cookies and local storage',
+    'priv.s3.p':'The site does not use tracking cookies. We only use browser local storage (localStorage/sessionStorage), strictly functional: remembering your language preference (RO/EN) and whether you have already seen the intro animation. This data stays only on your device, is never sent anywhere, and does not identify you personally.',
+    'priv.s4.h':'4. No third-party tracking',
+    'priv.s4.p':'We do not use Google Analytics, Facebook Pixel, or any other tracking tool. The site\'s fonts are hosted locally, not via Google Fonts, precisely so that no data is sent to third parties just to render the page.',
+    'priv.s5.h':'5. Your rights',
+    'priv.s5.p':'Under GDPR, you have the right to access, rectify, delete, or object to any data you have sent us by email. For any request, write to us at <a href="mailto:contact@bearsec.ro" style="color:var(--accent)">contact@bearsec.ro</a> — we reply within 30 days.',
+    'priv.s6.h':'6. Security',
+    'priv.s6.p':'We apply continuously updated technical security measures (HTTPS encryption, strict browser-level security policies) to protect data transmitted through this site.',
+
+    'cookie.eyebrow':'Privacy',
+    'cookie.text':'We use only strictly functional local storage (language preference, intro animation seen) — no tracking, no analytics.',
+    'cookie.ok':'Got it','cookie.more':'Learn more'
   }
 };
 
@@ -520,8 +539,7 @@ updateQuote();
 updateIntake();
 
 const cformEl=document.getElementById('cform');
-if(cformEl) cformEl.addEventListener('submit',e=>{
-  e.preventDefault();
+function cformMailtoFallback(e){
   const f=new FormData(e.target);
   const lang=document.documentElement.lang;
   const subject=encodeURIComponent('[BearSec] '+(lang==='en'?'Assessment request':'Cerere evaluare')+' — '+(f.get('companie')||f.get('nume')));
@@ -536,6 +554,35 @@ if(cformEl) cformEl.addEventListener('submit',e=>{
     +((f.get('sistem_afectat')||f.get('severitate'))?'\nIncident: '+(f.get('sistem_afectat')||'-')+' / '+(f.get('severitate')||'-'):'')
   );
   location.href='mailto:contact@bearsec.ro?subject='+subject+'&body='+body;
+}
+if(cformEl) cformEl.addEventListener('submit',e=>{
+  e.preventDefault();
+  const lang=document.documentElement.lang;
+  const btn=document.getElementById('cformSubmit');
+  const status=document.getElementById('cformStatus');
+  const f=new FormData(e.target);
+  if(btn){ btn.disabled=true; }
+  fetch(e.target.action,{
+    method:'POST',
+    body:f,
+    headers:{'Accept':'application/json'}
+  }).then(res=>{
+    if(res.ok){
+      if(status){
+        status.style.display='block';
+        status.textContent = lang==='en'
+          ? 'Thanks! Your message was sent — we\'ll reply within one business day.'
+          : 'Mulțumim! Mesajul a fost trimis — răspundem în maximum o zi lucrătoare.';
+      }
+      e.target.reset();
+      if(btn){ btn.disabled=false; }
+    } else {
+      throw new Error('Formspree error');
+    }
+  }).catch(()=>{
+    if(btn){ btn.disabled=false; }
+    cformMailtoFallback(e);
+  });
 });
 
 /* ============ LOVITURA DE LABA LA CLICK ============ */
@@ -1018,7 +1065,26 @@ if(cformEl) cformEl.addEventListener('submit',e=>{
   resize();
 })();
 
-document.getElementById('yr').textContent=new Date().getFullYear();
+const yrEl=document.getElementById('yr');
+if(yrEl) yrEl.textContent=new Date().getFullYear();
+
+/* ============ COOKIE BANNER ============ */
+(function(){
+  const banner=document.getElementById('cookieBanner');
+  if(!banner) return;
+  let ack=false;
+  try{ ack = localStorage.getItem('bearsec-cookie-ack')==='1'; }catch(e){}
+  if(!ack){
+    banner.classList.add('show');
+    document.documentElement.classList.add('intro-lock');
+  }
+  const okBtn=document.getElementById('cookieOk');
+  if(okBtn) okBtn.addEventListener('click',()=>{
+    banner.classList.remove('show');
+    document.documentElement.classList.remove('intro-lock');
+    try{ localStorage.setItem('bearsec-cookie-ack','1'); }catch(e){}
+  });
+})();
 
 let saved='ro';
 try{ saved=localStorage.getItem('bearsec-lang')||'ro'; }catch(e){}

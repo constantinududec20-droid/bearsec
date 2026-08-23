@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'; upgrade-insecure-requests" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>BearSec — Monitorizare de securitate 24/7</title>
 <meta name="description" content="BearSec — monitorizare de securitate, SIEM, vizibilitate endpoint si raspuns la incidente pentru firme mici si medii. Fara costuri enterprise." />
@@ -23,9 +23,7 @@
 <meta name="twitter:image" content="https://bearsec.io/img/bear-intro.png" />
 
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0f16'/><path d='M8 12a3 3 0 116 0M18 12a3 3 0 116 0M7 18c0-5 4-8 9-8s9 3 9 8-4 8-9 8-9-3-9-8z' fill='none' stroke='%23e8a33d' stroke-width='2'/></svg>" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/fonts.css" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230b0f16'/><path d='M8 12a3 3 0 116 0M18 12a3 3 0 116 0M7 18c0-5 4-8 9-8s9 3 9 8-4 8-9 8-9-3-9-8z' fill='none' stroke='%23e8a33d' stroke-width='2'/></svg>" />
 <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -491,7 +489,7 @@
         </div>
         <div class="form-status" data-i18n="ct.status">Raspuns rapid</div>
       </div>
-      <form id="cform">
+      <form id="cform" action="https://formspree.io/f/xzepqybr" method="POST">
         <div class="row2">
           <div class="field"><label data-i18n="ct.f1">Nume</label><input name="nume" placeholder="Alex Ionescu" required /></div>
           <div class="field"><label data-i18n="ct.f2">Companie</label><input name="companie" placeholder="Compania ta" /></div>
@@ -536,11 +534,12 @@
         <div class="submit-row">
           <div class="micro-proof">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            <span data-i18n="ct.proof">Mesajul se deschide in clientul tau de email, gata completat.</span>
+            <span data-i18n="ct.proof">Mesajul ajunge direct la noi, în siguranță.</span>
           </div>
-          <button type="submit" class="btn btn-primary" data-i18n="ct.send">Trimite mesajul</button>
+          <button type="submit" class="btn btn-primary" id="cformSubmit" data-i18n="ct.send">Trimite mesajul</button>
         </div>
         <p class="note" data-i18n="ct.note">Nu trimitem newslettere și nu vindem datele nimănui. Punct.</p>
+        <p class="note" id="cformStatus" style="display:none;color:var(--green)"></p>
       </form>
     </div>
   </div>
@@ -588,10 +587,19 @@
       <a href="#servicii" data-i18n="nav.services">Servicii</a>
       <a href="#pachete" data-i18n="nav.packages">Pachete</a>
       <a href="echipa.html">Echipa</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Confidențialitate</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </div>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-card">
+    <div class="eyebrow" data-i18n="cookie.eyebrow">Confidențialitate</div>
+    <p><span data-i18n="cookie.text">Folosim doar stocare locală strict funcțională (preferință de limbă, animație de start văzută) — fără urmărire, fără analytics.</span> <a href="privacy.html" data-i18n="cookie.more">Află mai multe</a></p>
+    <button id="cookieOk" class="btn btn-primary" data-i18n="cookie.ok">Am înțeles</button>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 </body>
